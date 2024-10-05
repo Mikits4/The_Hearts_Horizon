@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "packy:block/magic_block"
+    }
+  }
+}

@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 
 import java.util.Map;
 
-public class ChiselItem extends Item {
+public class ChiselItem extends Item { //put pointer on Item and press ctrl h to get inspired
     private static final Map<Block, Block> CHISEL_MAP = //maps out the block/gives it instructions
             Map.of(
                     Blocks.STONE, Blocks.STONE_BRICKS,
