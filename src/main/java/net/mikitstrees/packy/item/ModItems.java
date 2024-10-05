@@ -19,7 +19,7 @@ public class ModItems {
     public static void registerModItems() {
         Packy.LOGGER.info("Registering Mod Items for " + Packy.MOD_ID);
 
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> { //entries into the creative inventory, outside of a group i think?
             entries.add(PINK_GARNET);
             entries.add(RAW_PINK_GARNET);
         });
