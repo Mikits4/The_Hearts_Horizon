@@ -14,5 +14,11 @@
   "block.packy.magic_block": "Magic Block",
 
   "itemGroup.packy.pink_garnet_items": "Pink Garnet Items",
-  "itemGroup.packy.pink_garnet_blocks": "Pink Garnet Blocks"
+  "itemGroup.packy.pink_garnet_blocks": "Pink Garnet Blocks",
+
+  "tooltip.packy.magic_block.tooltip": "Magical block of §9magic§r, yuh.",
+
+  "tooltip.packy.chisel.shift_down": "This item chisels blocks into bricky blocky stuff",
+  "tooltip.packy.chisel": "Press §eShift§r for more Information!",
+  "tooltip.packy.cauliflower.tooltip": "This is nomnom"
 }
