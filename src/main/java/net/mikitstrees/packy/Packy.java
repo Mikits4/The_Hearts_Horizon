@@ -2,6 +2,7 @@ package net.mikitstrees.packy;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.mikitstrees.packy.block.ModBlocks;
 import net.mikitstrees.packy.item.ModItemGroups;
 import net.mikitstrees.packy.item.ModItems;
@@ -19,5 +20,7 @@ public class Packy implements ModInitializer {
 
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+
+		FuelRegistry.INSTANCE.add(ModItems.STARLIGHT_ASHES, 600); //double tap shift and search for AbstractFurnaceBlockEntity
 	}
 }
