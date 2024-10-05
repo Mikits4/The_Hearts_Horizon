@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "packy",
+	"version": "${version}",
+	"name": "Packy",
+	"description": "packy pack",
+	"authors": [
+		"Mikits!"
+	],
+	"contact": {
+		"homepage": "https://www.google.com",
+		"sources": "https://www.google.com"
+	},
+	"license": "MIT",
+	"icon": "assets/packy/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.mikitstrees.packy.Packy"
+		],
+		"fabric-datagen": [
+			"net.mikitstrees.packy.PackyDataGenerator"
+		],
+		"client": [
+			"net.mikitstrees.packy.PackyClient"
+		]
+	},
+	"mixins": [
+		"Packy.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
