@@ -1,6 +1,7 @@
 package net.mikitstrees.packy.block.custom;
 
 import net.mikitstrees.packy.item.ModItems;
+import net.mikitstrees.packy.util.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
@@ -35,13 +36,18 @@ public class MagicBlock extends Block { //put pointer on Bock and press ctrl h t
     @Override
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) { // does stuff when item is thrown on it, don't do super duper complex stuff here, make custom block entity
         if(entity instanceof ItemEntity itemEntity) {
-            if(itemEntity.getStack().getItem() == ModItems.RAW_PINK_GARNET) {
+            if(isValidItem(itemEntity.getStack())) {
                 itemEntity.setStack(new ItemStack(Items.DIAMOND, itemEntity.getStack().getCount()));
             }
         }
 
         super.onSteppedOn(world, pos, state, entity);
     }
+
+    private boolean isValidItem(ItemStack stack) {
+        return stack.isIn(ModTags.Items.TRANSFORMABLE_ITEMS);
+    }
+
 
     @Override
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
