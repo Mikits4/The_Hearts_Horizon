@@ -1,6 +1,7 @@
 package net.mikitstrees.packy.item.custom;
 
 import net.mikitstrees.packy.block.ModBlocks;
+import net.mikitstrees.packy.component.ModDataComponentTypes;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.gui.screen.Screen;
@@ -46,6 +47,8 @@ public class ChiselItem extends Item { //put pointer on Item and press ctrl h to
                         item -> context.getPlayer().sendEquipmentBreakStatus(item, EquipmentSlot.MAINHAND));
 
                 world.playSound(null, context.getBlockPos(), SoundEvents.BLOCK_GRINDSTONE_USE, SoundCategory.BLOCKS);
+
+                context.getStack().set(ModDataComponentTypes.COORDINATES, context.getBlockPos());
             }
         }
 
@@ -58,6 +61,10 @@ public class ChiselItem extends Item { //put pointer on Item and press ctrl h to
             tooltip.add(Text.translatable("tooltip.packy.chisel.shift_down"));
         }else {
             tooltip.add(Text.translatable("tooltip.packy.chisel"));
+        }
+
+        if (stack.get(ModDataComponentTypes.COORDINATES) != null) {
+            tooltip.add(Text.literal("Last Block Changes at " + stack.get(ModDataComponentTypes.COORDINATES)));
         }
 
         super.appendTooltip(stack, context, tooltip, type);
