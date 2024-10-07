@@ -1,7 +1,7 @@
-// 1.21	2024-10-07T22:23:19.571844	Packy/Block Loot Tables
+// 1.21	2024-10-07T22:58:23.5085405	Packy/Block Loot Tables
 a8e4f294b0ac491a9b049a4cae6c994800f604db data\packy\loot_table\blocks\pink_garnet_stairs.json
-0f9c60a76d3675ed416fdc2e1f47c75202e6997d data\packy\loot_table\blocks\magic_block.json
 32c0700f9af8d979bb6cb607bec867b456999cd6 data\packy\loot_table\blocks\pink_garnet_block.json
+0f9c60a76d3675ed416fdc2e1f47c75202e6997d data\packy\loot_table\blocks\magic_block.json
 095f1fc7a7b53cec9e2a990aa749eec3b05c108a data\packy\loot_table\blocks\pink_garnet_slab.json
 2f8cd947e5fdf22cdda539b72d736ed0bbafa84c data\packy\loot_table\blocks\pink_garnet_pressure_plate.json
 cafb9b3c5857b1dadb780dcedf7ea530b02da54e data\packy\loot_table\blocks\pink_garnet_trapdoor.json
