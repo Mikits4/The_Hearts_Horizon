@@ -5,6 +5,7 @@
   "item.packy.cauliflower": "Cauliflower",
   "item.packy.starlight_ashes": "Starlight Ashes",
 
+
   "block.packy.pink_garnet_block": "Block of Pink Garnet",
   "block.packy.raw_pink_garnet_block": "Block of Raw Pink Garnet",
 
@@ -16,9 +17,27 @@
   "itemGroup.packy.pink_garnet_items": "Pink Garnet Items",
   "itemGroup.packy.pink_garnet_blocks": "Pink Garnet Blocks",
 
+  "block.packy.pink_garnet_stairs": "Pink Garnet Stairs",
+  "block.packy.pink_garnet_slab": "Pink Garnet Slab",
+
+  "block.packy.pink_garnet_button": "Pink Garnet Button",
+  "block.packy.pink_garnet_pressure_plate": "Pink Garnet Pressure Plate",
+
+  "block.packy.pink_garnet_fence": "Pink Garnet Fence",
+  "block.packy.pink_garnet_fence_gate": "Pink Garnet Fence Gate",
+  "block.packy.pink_garnet_wall": "Pink Garnet Wall",
+
+  "block.packy.pink_garnet_door": "Pink Garnet Door",
+  "block.packy.pink_garnet_trapdoor": "Pink Garnet Trapdoor",
+
+
+  "itemgroup.packy.pink_garnet_items": "Pink Garnet Items",
+  "itemgroup.packy.pink_garnet_blocks": "Pink Garnet Blocks",
+
   "tooltip.packy.magic_block.tooltip": "Magical block of §9magic§r, yuh.",
 
   "tooltip.packy.chisel.shift_down": "This item chisels blocks into bricky blocky stuff",
   "tooltip.packy.chisel": "Press §eShift§r for more Information!",
+
   "tooltip.packy.cauliflower.tooltip": "This is nomnom"
 }
