@@ -1,32 +1,32 @@
 {
 	"schemaVersion": 1,
-	"id": "packy",
+	"id": "heartsinharmony",
 	"version": "${version}",
-	"name": "Packy",
-	"description": "packy pack",
+	"name": "Hearts in harmony",
+	"description": "Some wicked love and valantines themed mod.",
 	"authors": [
-		"Mikits!"
+		"Mikits"
 	],
 	"contact": {
 		"homepage": "https://www.google.com",
-		"sources": "https://www.google.com"
+		"sources": "https://github.com/Mikits4/Hearts_in_Harmony"
 	},
 	"license": "MIT",
-	"icon": "assets/packy/icon.png",
+	"icon": "assets/heartsinharmony/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.mikitstrees.packy.Packy"
+			"net.mikitstrees.heartsinharmony.HeartsinHarmony"
 		],
 		"fabric-datagen": [
-			"net.mikitstrees.packy.PackyDataGenerator"
+			"net.mikitstrees.heartsinharmony.HeartsinHarmonyDataGenerator"
 		],
 		"client": [
-			"net.mikitstrees.packy.PackyClient"
+			"net.mikitstrees.heartsinharmony.HeartsinHarmonyClient"
 		]
 	},
 	"mixins": [
-		"Packy.mixins.json"
+		"heartsinharmony.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.15.11",
