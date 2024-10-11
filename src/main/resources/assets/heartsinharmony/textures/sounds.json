@@ -1,0 +1,16 @@
+{
+  "song_name": {
+    "sounds": [
+      {
+        "name": "mccourse:song_name",
+        "stream": true
+      }
+    ]
+  },
+  "magic_block_fall": {
+    "subtitle": "sounds.heartsinharmony.lovebird_ambience",
+    "sounds": [
+      "heartsinharmony:lovebird_ambience"
+    ]
+  }
+}
