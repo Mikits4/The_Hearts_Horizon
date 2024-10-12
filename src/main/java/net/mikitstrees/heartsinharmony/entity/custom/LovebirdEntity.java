@@ -1,12 +1,7 @@
 package net.mikitstrees.heartsinharmony.entity.custom;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Map;
 import java.util.function.IntFunction;
-import java.util.function.Predicate;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
@@ -19,13 +14,7 @@ import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.VariantHolder;
 import net.minecraft.entity.ai.FuzzyTargeting;
 import net.minecraft.entity.ai.control.FlightMoveControl;
-import net.minecraft.entity.ai.goal.FlyGoal;
-import net.minecraft.entity.ai.goal.FollowMobGoal;
-import net.minecraft.entity.ai.goal.FollowOwnerGoal;
-import net.minecraft.entity.ai.goal.LookAtEntityGoal;
-import net.minecraft.entity.ai.goal.SitGoal;
-import net.minecraft.entity.ai.goal.SitOnOwnerShoulderGoal;
-import net.minecraft.entity.ai.goal.SwimGoal;
+import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.ai.pathing.PathNodeType;
@@ -49,7 +38,6 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
@@ -62,7 +50,6 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.world.Difficulty;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
@@ -71,49 +58,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class LovebirdEntity extends TameableShoulderEntity implements VariantHolder<LovebirdEntity.Variant>, Flutterer {
     private static final TrackedData<Integer> VARIANT = DataTracker.registerData(LovebirdEntity.class, TrackedDataHandlerRegistry.INTEGER);
-    private static final Predicate<MobEntity> CAN_IMITATE = new Predicate<MobEntity>() {
-        public boolean test(@Nullable MobEntity mobEntity) {
-            return mobEntity != null && LovebirdEntity.MOB_SOUNDS.containsKey(mobEntity.getType());
-        }
-    };
-    static final Map<EntityType<?>, SoundEvent> MOB_SOUNDS = Util.make(Maps.<EntityType<?>, SoundEvent>newHashMap(), map -> {
-        map.put(EntityType.BLAZE, SoundEvents.ENTITY_PARROT_IMITATE_BLAZE);
-        map.put(EntityType.BOGGED, SoundEvents.ENTITY_PARROT_IMITATE_BOGGED);
-        map.put(EntityType.BREEZE, SoundEvents.ENTITY_PARROT_IMITATE_BREEZE);
-        map.put(EntityType.CAVE_SPIDER, SoundEvents.ENTITY_PARROT_IMITATE_SPIDER);
-        map.put(EntityType.CREEPER, SoundEvents.ENTITY_PARROT_IMITATE_CREEPER);
-        map.put(EntityType.DROWNED, SoundEvents.ENTITY_PARROT_IMITATE_DROWNED);
-        map.put(EntityType.ELDER_GUARDIAN, SoundEvents.ENTITY_PARROT_IMITATE_ELDER_GUARDIAN);
-        map.put(EntityType.ENDER_DRAGON, SoundEvents.ENTITY_PARROT_IMITATE_ENDER_DRAGON);
-        map.put(EntityType.ENDERMITE, SoundEvents.ENTITY_PARROT_IMITATE_ENDERMITE);
-        map.put(EntityType.EVOKER, SoundEvents.ENTITY_PARROT_IMITATE_EVOKER);
-        map.put(EntityType.GHAST, SoundEvents.ENTITY_PARROT_IMITATE_GHAST);
-        map.put(EntityType.GUARDIAN, SoundEvents.ENTITY_PARROT_IMITATE_GUARDIAN);
-        map.put(EntityType.HOGLIN, SoundEvents.ENTITY_PARROT_IMITATE_HOGLIN);
-        map.put(EntityType.HUSK, SoundEvents.ENTITY_PARROT_IMITATE_HUSK);
-        map.put(EntityType.ILLUSIONER, SoundEvents.ENTITY_PARROT_IMITATE_ILLUSIONER);
-        map.put(EntityType.MAGMA_CUBE, SoundEvents.ENTITY_PARROT_IMITATE_MAGMA_CUBE);
-        map.put(EntityType.PHANTOM, SoundEvents.ENTITY_PARROT_IMITATE_PHANTOM);
-        map.put(EntityType.PIGLIN, SoundEvents.ENTITY_PARROT_IMITATE_PIGLIN);
-        map.put(EntityType.PIGLIN_BRUTE, SoundEvents.ENTITY_PARROT_IMITATE_PIGLIN_BRUTE);
-        map.put(EntityType.PILLAGER, SoundEvents.ENTITY_PARROT_IMITATE_PILLAGER);
-        map.put(EntityType.RAVAGER, SoundEvents.ENTITY_PARROT_IMITATE_RAVAGER);
-        map.put(EntityType.SHULKER, SoundEvents.ENTITY_PARROT_IMITATE_SHULKER);
-        map.put(EntityType.SILVERFISH, SoundEvents.ENTITY_PARROT_IMITATE_SILVERFISH);
-        map.put(EntityType.SKELETON, SoundEvents.ENTITY_PARROT_IMITATE_SKELETON);
-        map.put(EntityType.SLIME, SoundEvents.ENTITY_PARROT_IMITATE_SLIME);
-        map.put(EntityType.SPIDER, SoundEvents.ENTITY_PARROT_IMITATE_SPIDER);
-        map.put(EntityType.STRAY, SoundEvents.ENTITY_PARROT_IMITATE_STRAY);
-        map.put(EntityType.VEX, SoundEvents.ENTITY_PARROT_IMITATE_VEX);
-        map.put(EntityType.VINDICATOR, SoundEvents.ENTITY_PARROT_IMITATE_VINDICATOR);
-        map.put(EntityType.WARDEN, SoundEvents.ENTITY_PARROT_IMITATE_WARDEN);
-        map.put(EntityType.WITCH, SoundEvents.ENTITY_PARROT_IMITATE_WITCH);
-        map.put(EntityType.WITHER, SoundEvents.ENTITY_PARROT_IMITATE_WITHER);
-        map.put(EntityType.WITHER_SKELETON, SoundEvents.ENTITY_PARROT_IMITATE_WITHER_SKELETON);
-        map.put(EntityType.ZOGLIN, SoundEvents.ENTITY_PARROT_IMITATE_ZOGLIN);
-        map.put(EntityType.ZOMBIE, SoundEvents.ENTITY_PARROT_IMITATE_ZOMBIE);
-        map.put(EntityType.ZOMBIE_VILLAGER, SoundEvents.ENTITY_PARROT_IMITATE_ZOMBIE_VILLAGER);
-    });
+
     public float flapProgress;
     public float maxWingDeviation;
     public float prevMaxWingDeviation;
@@ -130,10 +75,6 @@ public class LovebirdEntity extends TameableShoulderEntity implements VariantHol
         this.setPathfindingPenalty(PathNodeType.DANGER_FIRE, -1.0F);
         this.setPathfindingPenalty(PathNodeType.DAMAGE_FIRE, -1.0F);
         this.setPathfindingPenalty(PathNodeType.COCOA, -1.0F);
-    }
-
-    public static DefaultAttributeContainer createLovebirdAttributes() {
-        return null;
     }
 
     @Nullable
@@ -160,11 +101,12 @@ public class LovebirdEntity extends TameableShoulderEntity implements VariantHol
         this.goalSelector.add(2, new SitGoal(this));
         this.goalSelector.add(2, new FollowOwnerGoal(this, 1.0, 5.0F, 1.0F));
         this.goalSelector.add(2, new LovebirdEntity.FlyOntoTreeGoal(this, 1.0));
+        // add duo group goal
         this.goalSelector.add(3, new SitOnOwnerShoulderGoal(this));
         this.goalSelector.add(3, new FollowMobGoal(this, 1.0, 3.0F, 7.0F));
     }
 
-    public static DefaultAttributeContainer.Builder createParrotAttributes() {
+    public static DefaultAttributeContainer.Builder createLovebirdAttributes() {
         return MobEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 6.0)
                 .add(EntityAttributes.GENERIC_FLYING_SPEED, 0.4F)
@@ -188,10 +130,6 @@ public class LovebirdEntity extends TameableShoulderEntity implements VariantHol
         {
             this.songPlaying = false;
             this.songSource = null;
-        }
-
-        if (this.getWorld().random.nextInt(400) == 0) {
-            imitateNearbyMob(this.getWorld(), this);
         }
 
         super.tickMovement();
@@ -224,24 +162,6 @@ public class LovebirdEntity extends TameableShoulderEntity implements VariantHol
         }
 
         this.flapProgress = this.flapProgress + this.flapSpeed * 2.0F;
-    }
-
-    public static boolean imitateNearbyMob(World world, Entity parrot) {
-        if (parrot.isAlive() && !parrot.isSilent() && world.random.nextInt(2) == 0) {
-            List<MobEntity> list = world.getEntitiesByClass(MobEntity.class, parrot.getBoundingBox().expand(20.0), CAN_IMITATE);
-            if (!list.isEmpty()) {
-                MobEntity mobEntity = (MobEntity)list.get(world.random.nextInt(list.size()));
-                if (!mobEntity.isSilent()) {
-                    SoundEvent soundEvent = getSound(mobEntity.getType());
-                    world.playSound(null, parrot.getX(), parrot.getY(), parrot.getZ(), soundEvent, parrot.getSoundCategory(), 0.7F, getSoundPitch(world.random));
-                    return true;
-                }
-            }
-
-            return false;
-        } else {
-            return false;
-        }
     }
 
     @Override
@@ -318,25 +238,6 @@ public class LovebirdEntity extends TameableShoulderEntity implements VariantHol
         return null;
     }
 
-    @Nullable
-    @Override
-    public SoundEvent getAmbientSound() {
-        return getRandomSound(this.getWorld(), this.getWorld().random);
-    }
-
-    public static SoundEvent getRandomSound(World world, Random random) {
-        if (world.getDifficulty() != Difficulty.PEACEFUL && random.nextInt(1000) == 0) {
-            List<EntityType<?>> list = Lists.<EntityType<?>>newArrayList(MOB_SOUNDS.keySet());
-            return getSound((EntityType<?>)list.get(random.nextInt(list.size())));
-        } else {
-            return SoundEvents.ENTITY_PARROT_AMBIENT;
-        }
-    }
-
-    private static SoundEvent getSound(EntityType<?> imitate) {
-        return (SoundEvent)MOB_SOUNDS.getOrDefault(imitate, SoundEvents.ENTITY_PARROT_AMBIENT);
-    }
-
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
         return SoundEvents.ENTITY_PARROT_HURT;
@@ -370,11 +271,6 @@ public class LovebirdEntity extends TameableShoulderEntity implements VariantHol
 
     public static float getSoundPitch(Random random) {
         return (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F;
-    }
-
-    @Override
-    public SoundCategory getSoundCategory() {
-        return SoundCategory.NEUTRAL;
     }
 
     @Override
@@ -491,11 +387,8 @@ public class LovebirdEntity extends TameableShoulderEntity implements VariantHol
     }
 
     public static enum Variant implements StringIdentifiable {
-        RED_BLUE(0, "red_blue"),
-        BLUE(1, "blue"),
-        GREEN(2, "green"),
-        YELLOW_BLUE(3, "yellow_blue"),
-        GRAY(4, "gray");
+        GREEN(0, "green"),
+        WHITE(1, "white");
 
         public static final Codec<LovebirdEntity.Variant> CODEC = StringIdentifiable.createCodec(LovebirdEntity.Variant::values);
         private static final IntFunction<LovebirdEntity.Variant> BY_ID = ValueLists.createIdToValueFunction(
@@ -504,7 +397,7 @@ public class LovebirdEntity extends TameableShoulderEntity implements VariantHol
         final int id;
         private final String name;
 
-        private Variant(final int id, final String name) {
+        Variant(final int id, final String name) {
             this.id = id;
             this.name = name;
         }

@@ -7,6 +7,7 @@ import net.mikitstrees.heartsinharmony.component.ModDataComponentTypes;
 import net.mikitstrees.heartsinharmony.entity.ModEntities;
 import net.mikitstrees.heartsinharmony.entity.custom.LovebirdEntity;
 
+import net.mikitstrees.heartsinharmony.item.ModItemGroups;
 import net.mikitstrees.heartsinharmony.item.ModItems;
 import net.mikitstrees.heartsinharmony.sound.ModSounds;
 import org.slf4j.Logger;
@@ -19,7 +20,7 @@ public class HeartsinHarmony implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-//		ModItemGroups.registerItemGroups();
+		ModItemGroups.registerItemGroups();
 
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();

@@ -13,7 +13,8 @@ import net.minecraft.util.Identifier;
 
 public class ModItems {
 
- //   public static final Item LOVEBIRD_SPAWN_EGG = new SpawnEggItem(ModEntities.LOVEBIRD, 0xc4c4c4, 0xadadad, new FabricItemSettings());
+    public static final Item LOVEBIRD_SPAWN_EGG = registerItem("lovebird_spawn_egg",
+            new SpawnEggItem(ModEntities.LOVEBIRD, 0x465ae0, 0x545978, new Item.Settings()));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(HeartsinHarmony.MOD_ID, name), item);
