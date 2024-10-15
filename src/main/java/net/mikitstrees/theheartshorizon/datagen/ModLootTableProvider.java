@@ -14,7 +14,6 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
-        addDrop(ModBlocks.BUTTERCUP);
-        addDrop(ModBlocks.POTTED_BUTTERCUP, pottedPlantDrops(ModBlocks.BUTTERCUP));
+
     }
 }

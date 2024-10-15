@@ -13,10 +13,7 @@ import net.minecraft.util.Identifier;
 
 public class ModBlocks {
 
-    public static final Block BUTTERCUP = registerBlock("buttercup",
-            new FlowerBlock(StatusEffects.OOZING, 4, Block.Settings.copy(Blocks.ALLIUM)));
-    public static final Block POTTED_BUTTERCUP = registerBlockWithoutBlockItem("potted_buttercup",
-            new FlowerPotBlock(BUTTERCUP, Block.Settings.copy(Blocks.POTTED_ALLIUM)));
+
 
     private static Block registerBlockWithoutBlockItem(String name, Block block) {
         return Registry.register(Registries.BLOCK, Identifier.of(TheHeartsHorizon.MOD_ID, name), block);

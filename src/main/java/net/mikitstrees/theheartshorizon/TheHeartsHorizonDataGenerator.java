@@ -3,8 +3,7 @@ package net.mikitstrees.theheartshorizon;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.mikitstrees.theheartshorizon.datagen.*;
-import net.mikitstrees.theheartshorizon.world.ModConfiguredFeatures;
-import net.mikitstrees.theheartshorizon.world.ModPlacedFeatures;
+import net.mikitstrees.theheartshorizon.world.dimension.ModDimensions;
 import net.minecraft.registry.RegistryBuilder;
 import net.minecraft.registry.RegistryKeys;
 
@@ -22,7 +21,6 @@ public class TheHeartsHorizonDataGenerator implements DataGeneratorEntrypoint {
 
     @Override
     public void buildRegistry(RegistryBuilder registryBuilder) {
-        registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);
-        registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
+        registryBuilder.addRegistry(RegistryKeys.DIMENSION_TYPE, ModDimensions::bootstrapType);
     }
 }

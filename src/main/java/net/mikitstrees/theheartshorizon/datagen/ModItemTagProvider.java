@@ -14,7 +14,6 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider{
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
- //       getOrCreateTagBuilder(ItemTags.CREEPER_DROP_MUSIC_DISCS)
- //               .add(ModItems.MUSIC_DISC_SONG_NAME);
+
     }
 }
