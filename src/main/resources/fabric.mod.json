@@ -1,32 +1,32 @@
 {
 	"schemaVersion": 1,
-	"id": "heartsinharmony",
+	"id": "theheartshorizon",
 	"version": "${version}",
-	"name": "Hearts in harmony",
-	"description": "Some wicked love and valantines themed mod.",
+	"name": "The Heart's Horizon",
+	"description": "The Heart's Horizon.",
 	"authors": [
 		"Mikits"
 	],
 	"contact": {
 		"homepage": "https://modrinth.com/user/Mikits",
-		"sources": "https://github.com/Mikits4/Lovers_Bunch"
+		"sources": "https://github.com/Mikits4/The_Hearts_Horizon"
 	},
 	"license": "MIT",
-	"icon": "assets/loversbunch/icon.png",
+	"icon": "assets/theheartshorizon/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-          "net.mikitstrees.loversbunch.LoversBunch"
+          "net.mikitstrees.theheartshorizon.TheHeartsHorizon"
 		],
 		"fabric-datagen": [
-			"net.mikitstrees.loversbunch.LoversBunchDataGenerator"
+			"net.mikitstrees.theheartshorizon.TheHeartsHorizonDataGenerator"
 		],
 		"client": [
-			"net.mikitstrees.loversbunch.LoversBunchClient"
+			"net.mikitstrees.theheartshorizon.TheHeartsHorizonClient"
 		]
 	},
 	"mixins": [
-		"loversbunch.mixins.json"
+		"theheartshorizon.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.15.11",
