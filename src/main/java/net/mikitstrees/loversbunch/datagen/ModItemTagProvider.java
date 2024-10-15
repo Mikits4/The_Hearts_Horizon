@@ -1,4 +1,4 @@
-package net.mikitstrees.heartsinharmony.datagen;
+package net.mikitstrees.loversbunch.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -14,6 +14,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider{
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-
+ //       getOrCreateTagBuilder(ItemTags.CREEPER_DROP_MUSIC_DISCS)
+ //               .add(ModItems.MUSIC_DISC_SONG_NAME);
     }
 }

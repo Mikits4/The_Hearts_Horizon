@@ -1,4 +1,4 @@
-package net.mikitstrees.heartsinharmony.mixin;
+package net.mikitstrees.loversbunch.mixin;
 
 import net.minecraft.server.MinecraftServer;
 import org.spongepowered.asm.mixin.Mixin;

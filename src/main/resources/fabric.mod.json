@@ -9,24 +9,24 @@
 	],
 	"contact": {
 		"homepage": "https://modrinth.com/user/Mikits",
-		"sources": "https://github.com/Mikits4/Hearts_in_Harmony"
+		"sources": "https://github.com/Mikits4/Lovers_Bunch"
 	},
 	"license": "MIT",
-	"icon": "assets/heartsinharmony/icon.png",
+	"icon": "assets/loversbunch/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.mikitstrees.heartsinharmony.HeartsinHarmony"
+          "net.mikitstrees.loversbunch.LoversBunch"
 		],
 		"fabric-datagen": [
-			"net.mikitstrees.heartsinharmony.HeartsinHarmonyDataGenerator"
+			"net.mikitstrees.loversbunch.LoversBunchDataGenerator"
 		],
 		"client": [
-			"net.mikitstrees.heartsinharmony.HeartsinHarmonyClient"
+			"net.mikitstrees.loversbunch.LoversBunchClient"
 		]
 	},
 	"mixins": [
-		"heartsinharmony.mixins.json"
+		"loversbunch.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.15.11",

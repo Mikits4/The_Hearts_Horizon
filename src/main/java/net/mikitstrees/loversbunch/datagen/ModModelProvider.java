@@ -1,11 +1,10 @@
-package net.mikitstrees.heartsinharmony.datagen;
+package net.mikitstrees.loversbunch.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.mikitstrees.heartsinharmony.entity.ModEntities;
-import net.mikitstrees.heartsinharmony.item.ModItems;
+import net.mikitstrees.loversbunch.block.ModBlocks;
+import net.mikitstrees.loversbunch.item.ModItems;
 import net.minecraft.data.client.*;
-import net.minecraft.item.SpawnEggItem;
 import net.minecraft.util.Identifier;
 
 import java.util.Optional;
@@ -17,7 +16,7 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.BUTTERCUP, ModBlocks.POTTED_BUTTERCUP, BlockStateModelGenerator.TintType.NOT_TINTED);
     }
 
     @Override

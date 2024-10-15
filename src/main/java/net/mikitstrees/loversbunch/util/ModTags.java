@@ -1,6 +1,6 @@
-package net.mikitstrees.heartsinharmony.util;
+package net.mikitstrees.loversbunch.util;
 
-import net.mikitstrees.heartsinharmony.HeartsinHarmony;
+import net.mikitstrees.loversbunch.LoversBunch;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
@@ -11,7 +11,7 @@ public class ModTags {
     public static class Blocks {
 
         private static TagKey<Block> createTag(String name) {
-            return TagKey.of(RegistryKeys.BLOCK, Identifier.of(HeartsinHarmony.MOD_ID, name));
+            return TagKey.of(RegistryKeys.BLOCK, Identifier.of(LoversBunch.MOD_ID, name));
         }
     }
 
@@ -19,7 +19,7 @@ public class ModTags {
         public static final TagKey<Item> TRANSFORMABLE_ITEMS = createTag("transformable_items");
 
         private static TagKey<Item> createTag(String name) {
-            return TagKey.of(RegistryKeys.ITEM, Identifier.of(HeartsinHarmony.MOD_ID, name));
+            return TagKey.of(RegistryKeys.ITEM, Identifier.of(LoversBunch.MOD_ID, name));
         }
     }
 }
